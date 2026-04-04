@@ -3,6 +3,34 @@ layout: default
 show_sidebar: false
 hero_height: is-small
 ---
+<style>
+    /* Estilos para o efeito de expansão e revelação */
+    .category-product {
+        display: block;
+        transition: transform 0.3s ease-in-out;
+        position: relative;
+        z-index: 1;
+    }
+
+    .category-product:hover {
+        /* Define o atraso de 0.5s antes de começar a crescer */
+        transition-delay: 0.5s;
+        transform: scale(1.1);
+        z-index: 10;
+    }
+
+    .product-title-reveal {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .category-product:hover .product-title-reveal {
+        /* O título aparece sincronizado com a expansão */
+        transition-delay: 0.5s;
+        opacity: 1;
+    }
+</style>
+
 <div class="columns is-multiline">
     <div class="column is-12">
         {{ page.content }}
@@ -33,16 +61,22 @@ hero_height: is-small
                     {% endif %}
                     <div class="card-content">
                         <p class="title is-4">{{ product.title }}</p>
-                        <p class="subtitle is-4">{{ product.subtitle }}</p>
-                        <br>
-                        <p class="title is-5 has-text-right">
-                            R$
-                            {%- if site.lang == 'pt' -%}
-                                {{- product['price-br'] -}}
-                            {%- else -%}
-                                {{- product['price-us'] -}}
-                            {%- endif %}
-                        </p>
+                        <div class="is-flex is-align-items-center is-justify-content-space-between">
+                            <div class="is-flex-grow-1">
+                                {% if product.rating %}
+                                    {% include rating.html rating=product.rating align="has-text-left" %}
+                                {% endif %}
+                            </div>
+                            <div class="is-flex-grow-1">
+                                <p class="title is-5 has-text-right mb-0">
+                                    {%- if site.lang == 'pt' -%}
+                                        {{- product['price-br'] -}}
+                                    {%- else -%}
+                                        {{- product['price-us'] -}}
+                                    {%- endif %}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </a>
