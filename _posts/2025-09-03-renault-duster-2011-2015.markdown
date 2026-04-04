@@ -1,12 +1,12 @@
 ---
 layout: post
 date:   2026-01-01 12:00:00:00 -300 # YYYY-MM-DD HH:MM:SS +/-0300
-title:  Renalt Duster 2011
+title:  Renalt Duster 2011-2015
 subtitle:
 description: Modelo 3D Renalt Duster 2011-2015
 image: /img/products/duster2011-lp/duster.png
 hero_image: /img/products/duster2011-lp/duster-front-side.png
-hero_height: is-small
+hero_height: is-medium
 hero_darken: true
 #permalink: :categories/:day/:short_month/:year/:week/:title
 canonical_url: 
