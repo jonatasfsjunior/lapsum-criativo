@@ -4,6 +4,7 @@ subtitle: Início
 layout: page
 show_sidebar: false
 hide_hero: true
+hero_height: is-small
 ---
 
 <!--<div class="index-banner">
@@ -27,17 +28,13 @@ hide_hero: true
 
 <!-- Eclipsta Studios - Sobre a empresa-->
 
-<!-- Nossos trabalhos
-Confira nossa loja-->
 ## Nossos Trabalhos
 
 {% include image-card.html folder="img/cards" %}
 
-## Sentido-se perdido?
+## Últimas novidades
+{% include post-card-horizontal.html %}
 
-Acesse os principais links aqui.
+## Acesse nossa loja aqui.
 
 * [Loja](/products)
-* [Postagens](/blog/)
-* [Todos os Links](/links/)
-* [Galeria](/gallery/)
