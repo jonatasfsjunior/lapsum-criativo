@@ -1,6 +1,6 @@
 # Site Settings
 theme: bulma-clean-theme
-title: Eclipsta Studio
+title: LAPSUM CRIATIVO
 tagline: Onde a luz encontra a forma.
 email: 
 description: >
@@ -8,9 +8,9 @@ description: >
   Somos especializados em design de veículos para uso em Jogos.
   Trabalhamos com excelência para entregar o melhor resultado.
   Atendemos a pedidos personalizados.
-  Dê luz aos seus projetos com a Eclipsta Studio!
+  Dê luz aos seus projetos com a Lapsum Criativo!
 baseurl: ""
-url: "https://eclipstastudio.vercel.app/"
+url: "https://lapsumcriativo.vercel.app"
 permalink: pretty
 favicon: "/img/Eclipsta.svg"
 gh_sponsor: 

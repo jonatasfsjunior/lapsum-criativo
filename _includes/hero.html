@@ -1,20 +1,43 @@
 <section
-    class="hero {% if page.hero_height %} {{ page.hero_height }} {% else %} is-medium {% endif %} is-bold is-primary"
-    {% if page.hero_image %}
-        style="background: url('{{ page.hero_image }}') no-repeat center center; background-size: cover;"
-    {% endif %}
+  class="hero {% if page.hero_height %}{{ page.hero_height }}{% else %}is-medium{% endif %} is-bold is-primary"
+  id="hero-section"
 >
-    <div class="hero-body {% if page.hero_darken %} hero-darken {% endif %}">
-        <div class="container">
-            <h1 class="title is-2">{{ page.title }}</h1>
-            <p class="subtitle is-3">{{ page.subtitle }}</p>
-            {% if page.hero_link %}
-                <div class="my-4">
-                    <a href="{{ page.hero_link | relative_url }}" class="button is-info is-large">
-                        {{- page.hero_link_text -}}
-                    </a>
-                </div>
-            {% endif %}
+  {% if page.hero_images %}
+    {% for img in page.hero_images %}
+      <div class="hero-slide{% if forloop.first %} active{% endif %}"
+           style="background: url('{{ img | relative_url }}') no-repeat center center; background-size: cover;"></div>
+    {% endfor %}
+  {% elsif page.hero_image %}
+    <div class="hero-slide active"
+         style="background: url('{{ page.hero_image }}') no-repeat center center; background-size: cover;"></div>
+  {% endif %}
+
+  <div class="hero-body{% if page.hero_darken %} hero-darken{% endif %}">
+    <div class="container">
+      <h1 class="title is-2">{{ page.title }}</h1>
+      <p class="subtitle is-3">{{ page.subtitle }}</p>
+      {% if page.hero_link %}
+        <div class="my-4">
+          <a href="{{ page.hero_link | relative_url }}" class="button is-info is-large">
+            {{- page.hero_link_text -}}
+          </a>
         </div>
+      {% endif %}
     </div>
+  </div>
 </section>
+
+{% if page.hero_images and page.hero_images.size > 1 %}
+<script>
+(function () {
+  var slides = document.querySelectorAll('#hero-section .hero-slide');
+  var current = 0;
+  var ms = {{ page.hero_image_interval | default: 5000 }};
+  setInterval(function () {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, ms);
+})();
+</script>
+{% endif %}

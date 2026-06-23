@@ -1,6 +1,4 @@
----
----
-$primary: rgb(0, 0, 0);
+--- --- $primary: rgb(0, 0, 0);
 $secondary: rgb(125, 0, 150);
 $body-background-color: rgb(18, 18, 18);
 $background-color: rgb(18, 18, 18);
@@ -13,14 +11,14 @@ $footer-background-color: rgb(0, 0, 0);
 $navbar-height: 6rem;
 $navbar-item-color: rgb(230, 230, 230);
 $navbar-item-img-max-height: 3rem;
-$navbar-burger-color: rgb(230,230,230);
+$navbar-burger-color: rgb(230, 230, 230);
 
 $card-background-color: rgb(25, 25, 25);
 $card-radius: 1rem;
 $card-shadow: none;
 
 .body {
-    touch-action:none;
+    touch-action: none;
 }
 
 figure.header-logo {
@@ -58,4 +56,31 @@ figure.header-logo img {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+}
+
+/* Hero Slide */
+
+#hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 0;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+#hero-section .hero-body {
+    position: relative;
+    z-index: 1;
 }
