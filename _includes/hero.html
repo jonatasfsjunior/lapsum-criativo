@@ -25,19 +25,44 @@
       {% endif %}
     </div>
   </div>
+
+  {% if page.hero_image_thumbs and page.hero_images %}
+  <div class="hero-thumbs" id="hero-thumbs">
+    {% for img in page.hero_images %}
+      <button class="hero-thumb{% if forloop.first %} active{% endif %}"
+              style="background-image: url('{{ img | relative_url }}');"
+              aria-label="Ir para slide {{ forloop.index }}"></button>
+    {% endfor %}
+  </div>
+  {% endif %}
 </section>
 
 {% if page.hero_images and page.hero_images.size > 1 %}
 <script>
 (function () {
   var slides = document.querySelectorAll('#hero-section .hero-slide');
+  var thumbs = document.querySelectorAll('#hero-thumbs .hero-thumb');
   var current = 0;
-  var ms = {{ page.hero_image_interval | default: 5000 }};
-  setInterval(function () {
+  var ms = {{ page.hero_image_interval | default: 7000 }};
+
+  function goSlide(n) {
     slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
+    if (thumbs[current]) thumbs[current].classList.remove('active');
+    current = n;
     slides[current].classList.add('active');
-  }, ms);
+    if (thumbs[current]) thumbs[current].classList.add('active');
+  }
+
+  thumbs.forEach(function (btn, i) {
+    btn.addEventListener('click', function () {
+      clearInterval(timer);
+      goSlide(i);
+      timer = setInterval(tick, ms);
+    });
+  });
+
+  function tick() { goSlide((current + 1) % slides.length); }
+  var timer = setInterval(tick, ms);
 })();
 </script>
 {% endif %}

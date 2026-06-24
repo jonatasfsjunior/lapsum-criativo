@@ -8,6 +8,7 @@ hero_images:
     - img\cards\Polo-2024-Track.png
     - img\cards\Yaris-2025-XL-XS.png
 hero_height: is-fullheight
+hero_image_thumbs: true
 ---
 <!-- Eclipsta Studios - Sobre a empresa-->
 
