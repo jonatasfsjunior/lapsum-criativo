@@ -4,7 +4,7 @@ subtitle: "Para você, para a sua história."
 description: Mitsubishi L200 Triton Sport HPE-S 2019
 product_code: 
 layout: product
-image:
+image: img/cards/L200-2019-HPE-S.png
 price-br: "75,00"
 price-usa: "14,99"
 price-euro: "13,99"
@@ -19,6 +19,7 @@ features:
 rating: 5
 hide_hero: false
 hero_images: 
+  - img/cards/L200-2019-HPE-S.png
 hero_height: is-fullheight
 hero_image_thumbs: true
 hero_hide_text: true
