@@ -1,7 +1,7 @@
 ---
 title: Mitsubishi L200 Triton Sport HPE-S 2019
 subtitle: "Para você, para a sua história."
-description: Mitsubishi L200 Triton Sport HPE-S 2019
+description: Mod da Mitsubishi L200 Triton Sport HPE-S 2019-2025 low poly SA Style para GTA San Andreas.
 product_code: l200
 layout: product
 image: img/cards/L200-2019-HPE-S.png

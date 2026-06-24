@@ -1,24 +1,54 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="{{ site.theme_color | default: '#ffffff' }}">
+<meta name="theme-color" content="{{ site.theme_color | default: '#0000' }}">
 <meta
     name="description"
     content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
 >
-<meta name="title" content="{{ page.title }} - {{ site.title | default: 'Lapsum Criativo' }}">
-<meta name="keywords" content="Design 3D, Blogue, Loja">
+<meta name="title" content="{{ page.title }}{% if page.price %} — {{ page.price }}{% endif %} - {{ site.title | default: 'Lapsum Criativo' }}">
+<meta name="keywords" content="Design 3D, Loja">
 <meta name="robots" content="index, follow">
 <meta name="author" content="{{ page.author }}">
 
 <!-- Open Graph -->
 {% if page.layout == 'post' %}
     <meta property="og:type" content="article">
+{% elsif page.layout == 'product' %}
+    <meta property="og:type" content="product">
 {% else %}
     <meta property="og:type" content="website">
 {% endif %}
 
-<meta property="og:title" content="{{ page.title }} - {{ site.title | default: 'Lapsum Criativo' }}">
+<meta property="og:title" content="{{ page.title }}{% if page.price %} — {{ page.price }}{% endif %} - {{ site.title | default: 'Lapsum Criativo' }}">
 <meta
     property="og:description"
-    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+    content="{% if page.price %}{{ page.price }} · {% endif %}{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
 >
+<!-- Thumbnail para embeds -->
+<meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.image | absolute_url }}{% endif %}">
+<meta property="og:image:alt" content="{{ page.title | default: site.title }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.image | absolute_url }}{% endif %}">
+
+<!-- OG de produto -->
+{% if page.layout == 'product' and page.price %}
+    <meta property="product:price:amount" content="{{ page.price }}">
+    <meta property="product:price:currency" content="BRL">
+{% endif %}
+
+<!-- JSON-LD para Google -->
+{% if page.layout == 'product' and page.price %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ page.title }}",
+  "description": "{{ page.description | default: site.description }}",
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ page.price }}",
+    "priceCurrency": "BRL"
+  }
+}
+</script>
+{% endif %}
