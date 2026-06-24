@@ -41,7 +41,7 @@
     {% unless site.hide_share_buttons %}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">
     {% endunless %}
-    {% seo %}
+    { % comment % }{% seo %}{ % endcomment % }
     {% if site.feed %}
         {% feed_meta %}
     {% endif %}
