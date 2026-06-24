@@ -12,12 +12,3 @@ hero_height: is-fullheight
 hero_image_thumbs: false
 hero_hide_text: true
 ---
-
-## Nossos Trabalhos
-
-{% include image-card.html folder="img/cards" %}
-
-//## Últimas novidades
-//{% include post-card-horizontal.html %}
-//
-

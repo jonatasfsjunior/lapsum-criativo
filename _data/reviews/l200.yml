@@ -1,0 +1,14 @@
+- name: Paul
+  rating: 5
+  title: Excelente Trabalho!
+  date: 2026-06-07
+  avatar: 
+  description: > 
+    Excelente trabalho! Muito detalhado e fiel ao modelo real. Recomendo a todos
+- name: Josiah
+  rating: 5
+  title: Obra Prima!
+  date: 2026-06-04
+  avatar:
+  description: >
+    É um trabalho perfeito, eu recomendo muito os serviços dele!
