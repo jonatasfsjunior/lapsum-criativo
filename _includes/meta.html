@@ -1,3 +1,12 @@
+{% comment %} Calcula preço para exibição {% endcomment %}
+{% if page['price-br'] %}
+  {% assign og_price = page['price-br'] | prepend: "R$ " %}
+{% elsif page.layout == 'product' %}
+  {% assign og_price = "Grátis" %}
+{% else %}
+  {% assign og_price = "" %}
+{% endif %}
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="{{ site.theme_color | default: '#0000' }}">
@@ -5,7 +14,7 @@
     name="description"
     content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
 >
-<meta name="title" content="{{ page.title }}{% if page.price %} — {{ page.price }}{% endif %} - {{ site.title | default: 'Lapsum Criativo' }}">
+<meta name="title" content="{{ page.title }}{% if og_price %} — {{ og_price }}{% endif %} · {{ site.title | default: 'Lapsum Criativo' }}">
 <meta name="keywords" content="Design 3D, Loja">
 <meta name="robots" content="index, follow">
 <meta name="author" content="{{ page.author }}">
@@ -19,64 +28,26 @@
     <meta property="og:type" content="website">
 {% endif %}
 
-<meta property="og:title" content="{{ page.title }}{% if page.price %} — {{ page.price }}{% endif %} - {{ site.title | default: 'Lapsum Criativo' }}">
+<meta property="og:title" content="{{ page.title }}{% if og_price %} — {{ og_price }}{% endif %} · {{ site.title | default: 'Lapsum Criativo' }}">
 <meta
     property="og:description"
-    content="{% if page.price %}{{ page.price }} · {% endif %}{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+    content="{% if og_price %}{{ og_price }} · {% endif %}{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
 >
-<!-- Thumbnail para embeds -->
 <meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.image | absolute_url }}{% endif %}">
 <meta property="og:image:alt" content="{{ page.title | default: site.title }}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.image | absolute_url }}{% endif %}">
 
-<!-- OG de produto -->
-{% if page.layout == 'product' and page.price-br %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "{{ page.title }}",
-  "description": "{{ page.description | default: site.description }}",
-  "image": "{{ page.image | default: site.image | absolute_url }}",
-  "brand": {
-    "@type": "Brand",
-    "name": "Lapsum Criativo"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "{{ page.price-br | remove: 'R$' | strip | replace: '.', '' | replace: ',', '.' }}",
-    "priceCurrency": "BRL",
-    "availability": "https://schema.org/InStock",
-    "shippingDetails": {
-      "@type": "OfferShippingDetails",
-      "shippingRate": {
-        "@type": "MonetaryAmount",
-        "value": "0",
-        "currency": "BRL"
-      },
-      "deliveryTime": {
-        "@type": "ShippingDeliveryTime",
-        "handlingTime": {
-          "@type": "QuantitativeValue",
-          "minValue": 0,
-          "maxValue": 0,
-          "unitCode": "DAY"
-        },
-        "transitTime": {
-          "@type": "QuantitativeValue",
-          "minValue": 0,
-          "maxValue": 0,
-          "unitCode": "DAY"
-        }
-      }
-    },
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "applicableCountry": "BR",
-      "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
-    }
-  }
-}
-</script>
+<!-- Meta tags de produto para Facebook / WhatsApp / Instagram -->
+{% if page.layout == 'product' %}
+  {% if page['price-br'] %}
+    <meta property="product:price:amount" content="{{ page['price-br'] | replace: ',', '.' }}">
+    <meta property="product:price:currency" content="BRL">
+  {% endif %}
+  <meta property="product:availability" content="in stock">
+  <meta property="product:condition" content="new">
 {% endif %}
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title }}{% if og_price %} — {{ og_price }}{% endif %} · {{ site.title | default: 'Lapsum Criativo' }}">
+<meta name="twitter:description" content="{% if og_price %}{{ og_price }} · {% endif %}{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+<meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.image | absolute_url }}{% endif %}">
