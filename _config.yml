@@ -104,28 +104,28 @@ collections:
     show_sidebar: false
 
 social:
-  - facebook: #Add your Facebook
-  - twitter: #Add your Twitter
-  - google-plus: #Add your Google+
-  - github: #Add your GitHub
-  - instagram: #Add your Instagram
-  - linkedin: #Add your LinkedIn
-  - pinterest: #Add your Pinterest
-  - youtube: #Add your YouTube
-  - behance: #Add your Behance
-  - dribbble: #Add your Dribbble
-  - whatsapp: #Add your WhatsApp
-  - telegram: #Add your Telegram
-  - twitch: #Add your Twitch
-  - discord: https://discord.gg/hrDm7K9bcR
-  - reddit: #Add your Reddit
-  - skype: #Add your Skype
-  - stack-overflow: #Add your Stack Overflow
-  - medium: #Add your Medium
-  - spotify: #Add your Spotify
-  - soundcloud: #Add your SoundCloud
-  - tumblr: #Add your Tumblr
-  - flickr: #Add your Flickr
-  - vimeo: #Add your Vimeo
-  - rss: #/feed.xml
-  - email: #mailto:
+  facebook: #Add your Facebook
+  twitter: #Add your Twitter
+  google-plus: #Add your Google+
+  github: #Add your GitHub
+  instagram: #Add your Instagram
+  linkedin: #Add your LinkedIn
+  pinterest: #Add your Pinterest
+  youtube: #Add your YouTube
+  behance: #Add your Behance
+  dribbble: #Add your Dribbble
+  whatsapp: #Add your WhatsApp
+  telegram: #Add your Telegram
+  twitch: #Add your Twitch
+  discord: https://discord.gg/hrDm7K9bcR
+  reddit: #Add your Reddit
+  skype: #Add your Skype
+  stack-overflow: #Add your Stack Overflow
+  medium: #Add your Medium
+  spotify: #Add your Spotify
+  soundcloud: #Add your SoundCloud
+  tumblr: #Add your Tumblr
+  flickr: #Add your Flickr
+  vimeo: #Add your Vimeo
+  rss: #/feed.xml
+  email: #mailto:

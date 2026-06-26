@@ -1,0 +1,154 @@
+# ── Redes sociais principais ─────────────────────────────────────
+facebook:
+  icon: fa-facebook
+  family: fa-brands
+  label: Facebook
+
+instagram:
+  icon: fa-instagram
+  family: fa-brands
+  label: Instagram
+
+threads:
+  icon: fa-threads
+  family: fa-brands
+  label: Threads
+
+tiktok:
+  icon: fa-tiktok
+  family: fa-brands
+  label: TikTok
+
+x:
+  icon: fa-x-twitter
+  family: fa-brands
+  label: X / Twitter
+
+twitter:
+  icon: fa-twitter
+  family: fa-brands
+  label: Twitter
+
+youtube:
+  icon: fa-youtube
+  family: fa-brands
+  label: YouTube
+
+twitch:
+  icon: fa-twitch
+  family: fa-brands
+  label: Twitch
+
+discord:
+  icon: fa-discord
+  family: fa-brands
+  label: Discord
+
+reddit:
+  icon: fa-reddit
+  family: fa-brands
+  label: Reddit
+
+# ── Profissional / criativo ───────────────────────────────────────
+github:
+  icon: fa-github
+  family: fa-brands
+  label: GitHub
+
+linkedin:
+  icon: fa-linkedin
+  family: fa-brands
+  label: LinkedIn
+
+behance:
+  icon: fa-behance
+  family: fa-brands
+  label: Behance
+
+dribbble:
+  icon: fa-dribbble
+  family: fa-brands
+  label: Dribbble
+
+patreon:
+  icon: fa-patreon
+  family: fa-brands
+  label: Patreon
+
+stack-overflow:
+  icon: fa-stack-overflow
+  family: fa-brands
+  label: Stack Overflow
+
+medium:
+  icon: fa-medium
+  family: fa-brands
+  label: Medium
+
+# ── Mensagens / comunidade ────────────────────────────────────────
+whatsapp:
+  icon: fa-whatsapp
+  family: fa-brands
+  label: WhatsApp
+
+telegram:
+  icon: fa-telegram
+  family: fa-brands
+  label: Telegram
+
+skype:
+  icon: fa-skype
+  family: fa-brands
+  label: Skype
+
+mastodon:
+  icon: fa-mastodon
+  family: fa-brands
+  label: Mastodon
+
+bluesky:
+  icon: fa-bluesky
+  family: fa-brands
+  label: Bluesky
+
+# ── Áudio / vídeo / imagem ────────────────────────────────────────
+spotify:
+  icon: fa-spotify
+  family: fa-brands
+  label: Spotify
+
+soundcloud:
+  icon: fa-soundcloud
+  family: fa-brands
+  label: SoundCloud
+
+vimeo:
+  icon: fa-vimeo
+  family: fa-brands
+  label: Vimeo
+
+flickr:
+  icon: fa-flickr
+  family: fa-brands
+  label: Flickr
+
+pinterest:
+  icon: fa-pinterest
+  family: fa-brands
+  label: Pinterest
+
+tumblr:
+  icon: fa-tumblr
+  family: fa-brands
+  label: Tumblr
+
+# ── Utilidades ────────────────────────────────────────────────────
+rss:
+  icon: fa-rss
+  family: fa-solid
+  label: RSS Feed
+
+email:
+  icon: fa-envelope
+  family: fa-solid
+  label: E-mail

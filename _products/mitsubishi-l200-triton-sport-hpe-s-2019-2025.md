@@ -4,7 +4,7 @@ subtitle: "Para você, para a sua história."
 description: Mod da Mitsubishi L200 Triton Sport HPE-S 2019-2025 low poly SA Style para GTA San Andreas.
 product_code: l200
 layout: product
-image: img/cards/L200-2019-HPE-S.png
+image: /img/cards/L200-2019-HPE-S.png
 price-br: "75,00"
 price-usa: "14,99"
 price-euro: "13,99"
@@ -19,7 +19,7 @@ features:
 rating: 5
 hide_hero: false
 hero_images: 
-  - img/cards/L200-2019-HPE-S.png
+  - /img/cards/L200-2019-HPE-S.png
 hero_height: is-fullheight
 hero_image_thumbs: true
 hero_hide_text: true

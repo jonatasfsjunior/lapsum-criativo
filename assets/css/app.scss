@@ -19,7 +19,8 @@ $card-background-color: rgb(25, 25, 25);
 $card-radius: 1rem;
 $card-shadow: none;
 
-.body {
+/* ↓ Removido o ponto — era seletor de classe, não o elemento */
+body {
     touch-action: none;
 }
 
@@ -46,7 +47,7 @@ figure.header-logo img {
 }
 
 .footer-logo img {
-    width: 100;
+    width: 100%; /* ↓ Faltava o % */
     height: 100%;
     object-fit: contain;
 }
@@ -132,4 +133,68 @@ figure.header-logo img {
 
 .card-image figure {
     overflow: hidden;
+}
+
+/* ── Sticky footer ── */
+
+/* Faz o body ocupar no mínimo 100% da viewport */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* O conteúdo principal cresce para preencher o espaço restante */
+main, .main-content {
+  flex: 1 0 auto;
+}
+
+/* O footer não encolhe */
+.footer {
+  flex-shrink: 0;
+}
+// ── Hero responsivo ──────────────────────────────────────────────
+
+#hero-section {
+  position: relative !important;
+  overflow: hidden;
+
+  // Escala proporcionalmente com a largura do viewport
+  // Ajusta o ratio conforme o formato das tuas imagens (ex: 16/9, 21/9)
+  aspect-ratio: 16 / 9;
+
+  // Piso e teto para não ficar minúsculo nem absurdo
+  min-height: 260px;
+  max-height: 720px;
+}
+
+// Slides viram backdrop absoluto — não empurram mais conteúdo
+#hero-section .hero-slide {
+  position: absolute !important;
+  inset: 0;
+  background-size: cover !important;
+  background-position: center center !important;
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+  z-index: 0;
+}
+
+#hero-section .hero-slide.active {
+  opacity: 1;
+}
+
+// Hero-body e thumbs ficam acima dos slides
+#hero-section .hero-body {
+  position: relative;
+  z-index: 2;
+
+  // Override do padding fixo do Bulma (is-medium: 9rem, is-large: 18rem)
+  // Escala com o viewport em vez de ser fixo
+  padding-top: clamp(1.5rem, 5vw, 5rem) !important;
+  padding-bottom: clamp(1.5rem, 5vw, 5rem) !important;
+}
+
+.hero-thumbs {
+  position: relative;
+  z-index: 3;
 }
