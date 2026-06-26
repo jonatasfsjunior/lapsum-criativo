@@ -145,7 +145,7 @@ body {
 }
 
 /* O conteúdo principal cresce para preencher o espaço restante */
-main, .main-content {
+body > section.section {
   flex: 1 0 auto;
 }
 
