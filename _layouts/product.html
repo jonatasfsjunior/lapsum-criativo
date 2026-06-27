@@ -6,6 +6,12 @@ layout: default
         <figure class="image">
             <img src="{{ page.image | relative_url }}" style="max-width:100%; height:auto;">
         </figure>
+    <!-- Tags -->
+        <div class="tags my-4">
+            {% for tag in page.tags %}
+            {% include tag.html tag=tag %}
+            {% endfor %}
+        </div>
     </div>
 
     <div class="column is-6">
@@ -58,12 +64,7 @@ layout: default
         </a>
     </div>
 
-    <!-- Tags -->
-    <div class="tags my-4">
-        {% for tag in page.tags %}
-        {% include tag.html tag=tag %}
-        {% endfor %}
-    </div>
+
 
     <div class="column is-12">
         <p class="title is-4"> </p><br>
