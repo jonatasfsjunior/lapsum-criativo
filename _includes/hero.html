@@ -1,5 +1,5 @@
 <section
-  class="hero {% if page.hero_height %}{{ page.hero_height }}{% else %}is-medium{% endif %} is-bold is-primary{% if page.hero_lightbox %} hero-lightbox-enabled{% endif %}"
+  class="hero {% if page.hero_height %}{{ page.hero_height }}{% else %}is-medium{% endif %} is-bold is-primary{% unless page.hero_lightbox == false %} hero-lightbox-enabled{% endif %}"
   id="hero-section">
   {% if page.hero_images %}
   {% for img in page.hero_images %}
