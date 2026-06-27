@@ -1,0 +1,45 @@
+name: Build e deploy
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [content-updated]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo principal (privado)
+        uses: actions/checkout@v4
+
+      - name: Checkout repo de conteúdo
+        uses: actions/checkout@v4
+        with:
+          repository: jonatasfsjunior/lapsum-content
+          path: _content
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Mesclar conteúdo no site
+        run: |
+          cp -r _content/_products ./_posts 2>/dev/null || true
+          cp -r _content/_data ./_data 2>/dev/null || true
+          rsync -a _content/assets/img/ ./assets/img/ 2>/dev/null || true
+
+      - name: Configurar Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Deploy para Vercel
+        run: npx vercel --prod --yes
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

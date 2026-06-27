@@ -24,4 +24,5 @@ hero_height: is-fullheight
 hero_image_thumbs: true
 hero_hide_text: true
 tags: [Carros,Low-Poly,Japonês,Asiático,Segmento CL,Picape Média]
+published: true
 ---
