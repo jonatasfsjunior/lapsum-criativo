@@ -22,9 +22,9 @@ jobs:
 
       - name: Mesclar conteúdo
         run: |
-          cp -r _content/_posts ./_posts 2>/dev/null || true
           cp -r _content/_data ./_data 2>/dev/null || true
-          rsync -a _content/assets/img/ ./assets/img/ 2>/dev/null || true
+          cp -r _content/_img ./assets/img 2>/dev/null || true
+          cp -r _content/_products ./_products 2>/dev/null || true
 
       - name: Configurar Ruby
         uses: ruby/setup-ruby@v1
