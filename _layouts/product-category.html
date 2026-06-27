@@ -4,7 +4,6 @@ show_sidebar: false
 hero_height: is-small
 ---
 <style>
-    /* Estilos para o efeito de expansão e revelação */
     .category-product {
         display: block;
         transition: transform 0.3s ease-in-out;
@@ -13,7 +12,6 @@ hero_height: is-small
     }
 
     .category-product:hover {
-        /* Define o atraso de 0.5s antes de começar a crescer */
         transition-delay: 0.5s;
         transform: scale(1.1);
         z-index: 10;
@@ -25,7 +23,6 @@ hero_height: is-small
     }
 
     .category-product:hover .product-title-reveal {
-        /* O título aparece sincronizado com a expansão */
         transition-delay: 0.5s;
         opacity: 1;
     }
@@ -44,15 +41,17 @@ hero_height: is-small
         {% assign sorted_products = null %}
     {% endif %}
 
+    {% assign sorted_products = sorted_products | where_exp: "p", "p.hidden != true" %}
+
     {% for product in sorted_products %}
         <div class="column is-4-desktop is-6-tablet">
             <a href="{{ product.url | relative_url }}" class="category-product">
                 <div class="card">
-                    {% if product.image %}
+                    {% if product.banner %}
                         <div class="card-image">
                             <figure class="image is-16by9">
                                 <img
-                                    src="{{ product.image }}"
+                                    src="{{ product.banner }}"
                                     style="max-width:100%; height:auto;"
                                     alt="{{ product.title }}"
                                 >
