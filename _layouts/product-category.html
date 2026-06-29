@@ -33,6 +33,8 @@ hero_height: is-small
         {{ page.content }}
     </div>
 
+    {% include search.html %}
+
     {% if page.collection and site[page.collection] %}
         {% assign sorted_products = site[page.collection] | sort: page.sort %}
     {% elsif site.products %}
@@ -42,8 +44,6 @@ hero_height: is-small
     {% endif %}
 
     {% assign sorted_products = sorted_products | where_exp: "p", "p.hidden != true" %}
-
-    {% include search.html %}
 
     {% for product in sorted_products %}
         <div class="column is-4-desktop is-6-tablet">
