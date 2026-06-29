@@ -1,5 +1,4 @@
-<!-- Search bar: para usar, adicione a linha abaixo no layout -->
-<!-- include search.html -->
+<!-- Search bar — inclua com {% include search.html %} no layout -->
 <div id="lapsum-search-wrap">
   <div class="search-trigger" id="searchTrigger" role="button" tabindex="0" aria-label="Abrir busca">
     <span class="icon"><i class="fas fa-search"></i></span>
@@ -144,32 +143,22 @@
 
 .search-results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
 }
-.search-result-card {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit;
-  display: flex; flex-direction: column; transition: border-color 0.15s, background 0.15s;
+.search-result-card { text-decoration: none; color: inherit; }
+.search-result-card .card {
+  background: #1a1a1a; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; height: 100%;
 }
-.search-result-card:hover { border-color: #C8102E; background: rgba(200,16,46,0.06); }
-.search-result-img { height: 90px; overflow: hidden; background: #1a1a1a; }
-.search-result-img img { width: 100%; height: 100%; object-fit: cover; }
-.search-result-body { padding: 10px 12px; }
-.search-result-category {
-  font-size: 11px; color: #C8102E; text-transform: uppercase;
-  letter-spacing: 0.06em; font-weight: 600; margin-bottom: 4px;
+.search-result-card:hover .card { border-color: #C8102E; }
+.search-result-card .card-content { padding: 0.75rem 1rem; }
+.search-result-card .title { color: #fff !important; }
+.search-result-card .title mark {
+  background: rgba(200,16,46,0.35); color: #ff8080;
+  border-radius: 2px; padding: 0 2px;
 }
-.search-result-title {
-  font-size: 13px; font-weight: 500; color: #fff; line-height: 1.35;
-  margin-bottom: 6px;
-}
-.search-result-title mark {
-  background: rgba(200,16,46,0.3); color: #ff6b6b; border-radius: 2px;
-  padding: 0 1px;
-}
-.search-result-price { font-size: 13px; font-weight: 600; color: #C8102E; }
-.search-result-price.is-free { color: #48c774; }
+.search-result-stars { color: #C8102E; font-size: 12px; letter-spacing: 1px; }
 
 /* ── Scrollbar ── */
 .search-body::-webkit-scrollbar { width: 4px; }

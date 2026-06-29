@@ -124,11 +124,29 @@
 
     let matched;
     try {
-      const hits = lunrIndex.search(q + "* " + q);
-      const hitIds = new Set(hits.map((h) => Number(h.ref)));
-      matched = products.filter((p) => hitIds.has(p.id));
+      const terms = q.trim().split(/\s+/).filter(Boolean);
+      const lunrHits = lunrIndex.query(function (query) {
+        terms.forEach(function (term) {
+          query.term(term, { wildcard: lunr.Query.wildcard.TRAILING, boost: 10 });
+          if (term.length > 3) {
+            query.term(term, { editDistance: 1, boost: 3 });
+          }
+        });
+      });
+      const lunrIds = new Set(lunrHits.map((h) => Number(h.ref)));
+
+      const lower = q.toLowerCase();
+      const searchFields = (p) =>
+        [p.title, p.category, p.description, ...(Array.isArray(p.tags) ? p.tags : [])]
+          .join(" ").toLowerCase();
+      const subIds = new Set(
+        products.filter((p) => searchFields(p).includes(lower)).map((p) => p.id)
+      );
+
+      const allIds = new Set([...lunrIds, ...subIds]);
+      matched = products.filter((p) => allIds.has(p.id));
+      matched.sort((a, b) => (lunrIds.has(a.id) ? 0 : 1) - (lunrIds.has(b.id) ? 0 : 1));
     } catch (_) {
-      // Fallback: busca simples por substring
       const lower = q.toLowerCase();
       matched = products.filter(
         (p) =>
@@ -174,23 +192,37 @@
     noResEl.style.display   = "none";
     resultsEl.style.display = "grid";
 
+    const lang = document.documentElement.lang || "pt";
+
     resultsEl.innerHTML = list
       .map((p) => {
-        const priceHtml = p.free
-          ? `<span class="search-result-price is-free">Grátis</span>`
-          : `<span class="search-result-price">${p.price || ""}</span>`;
+        const price = lang === "pt" ? (p["price-br"] || "") : (p["price-us"] || "");
 
-        const imgHtml = p.image
-          ? `<img src="${p.image}" alt="${p.title}" loading="lazy" />`
+        const bannerHtml = p.banner
+          ? `<div class="card-image">
+               <figure class="image is-16by9">
+                 <img src="${p.banner}" alt="${p.title}" loading="lazy" style="max-width:100%;height:auto;">
+               </figure>
+             </div>`
+          : "";
+
+        const starsHtml = p.rating
+          ? `<span class="search-result-stars">${"★".repeat(Math.round(p.rating))}${"☆".repeat(5 - Math.round(p.rating))}</span>`
           : "";
 
         return `
-          <a href="${p.url}" class="search-result-card">
-            <div class="search-result-img">${imgHtml}</div>
-            <div class="search-result-body">
-              <div class="search-result-category">${p.category || ""}</div>
-              <div class="search-result-title">${highlight(p.title || "", words)}</div>
-              ${priceHtml}
+          <a href="${p.url}" class="category-product search-result-card">
+            <div class="card">
+              ${bannerHtml}
+              <div class="card-content">
+                <p class="title is-5">${highlight(p.title || "", words)}</p>
+                <div class="is-flex is-align-items-center is-justify-content-space-between">
+                  <div class="is-flex-grow-1">${starsHtml}</div>
+                  <div class="is-flex-grow-1">
+                    <p class="title is-6 has-text-right mb-0" style="color:#C8102E">${price}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </a>
         `;

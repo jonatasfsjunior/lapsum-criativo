@@ -8,11 +8,13 @@ layout: null
     "title": {{ product.title | jsonify }},
     "description": {{ product.description | default: "" | strip_html | truncate: 200 | jsonify }},
     "category": {{ product.category | default: "" | jsonify }},
-    "price": {{ product.price | default: "" | jsonify }},
+    "price-br": {{ product['price-br'] | default: "" | jsonify }},
+    "price-us": {{ product['price-us'] | default: "" | jsonify }},
     "free": {{ product.free | default: false | jsonify }},
+    "rating": {{ product.rating | default: 0 | jsonify }},
     "tags": {{ product.tags | default: "" | jsonify }},
-    "url": {{ product.url | prepend: site.baseurl | jsonify }},
-    "image": {{ product.images[0] | prepend: site.baseurl | jsonify }}
+    "banner": {{ product.banner | prepend: site.baseurl | jsonify }},
+    "url": {{ product.url | prepend: site.baseurl | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endunless %}{% endfor %}
 ]
