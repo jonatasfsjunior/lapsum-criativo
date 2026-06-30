@@ -3,12 +3,12 @@
         display: block;
         &:hover {
             outline: solid 2px $link;
-            border-radius: var(--bulma-card-radius);
+            border-radius: 1rem;
         }
         &:focus, 
         &:active {
             outline: solid 2px $link;
-            border-radius: var(--bulma-card-radius);
+            border-radius: 1rem;
             box-shadow: $box-shadow;
         }
     }
