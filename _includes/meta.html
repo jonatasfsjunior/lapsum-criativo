@@ -17,6 +17,7 @@
 {% comment %} Descrição: idem, sem o " · " fantasma {% endcomment %}
 {% capture full_description %}{% if og_price %}{{ og_price }} · {% endif %}{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
 
+<title>{{ full_title | strip }}</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="{{ site.theme_color | default: '#C8102E' }}">
@@ -35,6 +36,8 @@
     <meta property="og:type" content="website">
 {% endif %}
 
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:site_name" content="{{ site.title | default: 'Lapsum Criativo' }}">
 <meta property="og:title" content="{{ full_title | strip }}">
 <meta property="og:description" content="{{ full_description | strip }}">
 <meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.og_image | absolute_url }}{% endif %}">
