@@ -266,3 +266,12 @@ body > section.section {
 body.lightbox-open {
   overflow: hidden;
 }
+
+.navbar-end {
+  align-items: center; // garante alinhamento vertical de todos os itens, incluindo o search-trigger
+}
+
+#lapsum-search-wrap {
+  display: flex;
+  align-items: center;
+}

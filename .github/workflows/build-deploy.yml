@@ -46,7 +46,21 @@ jobs:
         run: |
           mkdir -p .vercel/output/static
           cp -r _site/. .vercel/output/static/
-          echo '{"version":3}' > .vercel/output/config.json
+          cat > .vercel/output/config.json << 'EOF'
+          {
+            "version": 3,
+            "routes": [
+              { "handle": "filesystem" },
+              { "src": "/.*", "status": 404, "dest": "/404.html" }
+            ],
+            "overrides": {
+              "404.html": {
+                "path": "404",
+                "contentType": "text/html; charset=utf-8"
+              }
+            }
+          }
+          EOF
 
       - name: Deploy para Vercel
         run: npx vercel deploy --prebuilt --prod --yes

@@ -61,15 +61,15 @@
 <style>
 /* ── Trigger ── */
 .search-trigger {
-  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
-  padding: 1rem 1rem; border-radius: $card-radius;
+  display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
+  padding: 1rem 1rem; border-radius: 1rem;
   color: #ccc; border: 1px solid rgba(255,255,255,0.15);
   transition: color 0.15s, border-color 0.15s;
   font-size: 0.875rem;
 }
 .search-trigger:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 .search-trigger kbd {
-  font-size: 11px; background: rgba(255,255,255,0.1); border-radius: 3px;
+  font-size: 0,6875rem; background: rgba(255,255,255,0.1); border-radius: 3px;
   padding: 1px 5px; font-family: inherit; border: 1px solid rgba(255,255,255,0.2);
 }
 
@@ -146,9 +146,8 @@
 }
 .search-result-card { text-decoration: none; color: inherit; }
 .search-result-card .card {
-  background: #1a1a1a; border: 1px solid rgba(255,255,255,0.08);
+  background: #1a1a1a;
 }
-.search-result-card:hover .card { border-color: #C8102E; }
 .search-result-card .card-content { padding: 0.75rem 1rem; }
 .search-result-card .title { color: #fff !important; }
 .search-result-card .title mark {
