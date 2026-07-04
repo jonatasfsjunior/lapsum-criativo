@@ -1,14 +1,10 @@
 # Site Settings
 theme: bulma-clean-theme
 title: LAPSUM CRIATIVO
-tagline: Onde a luz encontra a forma.
+tagline: Criatividade em cada dimensão.
 email: 
 description: >
-  Adquira modelos 3D de alta qualidade para seus projetos.
-  Somos especializados em design de veículos para uso em Jogos.
-  Trabalhamos com excelência para entregar o melhor resultado.
-  Atendemos a pedidos personalizados.
-  Dê luz aos seus projetos com a Lapsum Criativo!
+  Adquira modelos 3D de alta qualidade para suas produções. Explore nossa coleção de modelos 3D, desde veículos detalhados até ambientes imersivos. Perfeito para artistas, desenvolvedores de jogos e criadores de conteúdo que buscam recursos visuais excepcionais.
 baseurl: ""
 url: "https://lapsumcriativo.vercel.app"
 permalink: pretty
@@ -100,7 +96,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /img/Lapsum-Placeholder.svg
+      image: /img/og-cover.png
 
 markdown: kramdown
 highlighter: rouge
