@@ -3,8 +3,7 @@ theme: bulma-clean-theme
 title: LAPSUM CRIATIVO
 tagline: Criatividade em cada dimensão.
 email: 
-description: >
-  Adquira modelos 3D de alta qualidade para suas produções. Explore nossa coleção de modelos 3D, desde veículos detalhados até ambientes imersivos. Perfeito para artistas, desenvolvedores de jogos e criadores de conteúdo que buscam recursos visuais excepcionais.
+description: [Explore nossa coleção de modelos 3D de alta qualidade. Perfeito para artistas, desenvolvedores de jogos e criadores de conteúdo que buscam recursos visuais excepcionais.]
 baseurl: ""
 url: "https://lapsumcriativo.vercel.app"
 permalink: pretty
