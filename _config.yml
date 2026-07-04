@@ -79,6 +79,8 @@ sass:
 #google_analytics: UA-code-here
 cookie_policy: /cookie-policy/
 
+og_image: /img/og-cover.png
+
 defaults:
   -
     scope:

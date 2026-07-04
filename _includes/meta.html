@@ -4,17 +4,24 @@
 {% elsif page.layout == 'product' %}
   {% assign og_price = "Grátis" %}
 {% else %}
-  {% assign og_price = "" %}
+  {% assign og_price = nil %}
 {% endif %}
+
+{% comment %} Título: home usa marca + tagline, demais páginas usam título · marca {% endcomment %}
+{% if page.url == "/" or page.layout == "home" %}
+  {% assign full_title = site.title | append: " — " | append: site.tagline %}
+{% else %}
+  {% capture full_title %}{{ page.title }}{% if og_price %} — {{ og_price }}{% endif %} · {{ site.title | default: "Lapsum Criativo" }}{% endcapture %}
+{% endif %}
+
+{% comment %} Descrição: idem, sem o " · " fantasma {% endcomment %}
+{% capture full_description %}{% if og_price %}{{ og_price }} · {% endif %}{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="{{ site.theme_color | default: '#0000' }}">
-<meta
-    name="description"
-    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
->
-<meta name="title" content="{{ page.title }}{% if og_price %} — {{ og_price }}{% endif %} · {{ site.title | default: 'Lapsum Criativo' }}">
+<meta name="theme-color" content="{{ site.theme_color | default: '#C8102E' }}">
+<meta name="description" content="{{ full_description | strip }}">
+<meta name="title" content="{{ full_title | strip }}">
 <meta name="keywords" content="Design 3D, Loja">
 <meta name="robots" content="index, follow">
 <meta name="author" content="{{ page.author }}">
@@ -28,12 +35,11 @@
     <meta property="og:type" content="website">
 {% endif %}
 
-<meta property="og:title" content="{{ page.title }}{% if og_price %} — {{ og_price }}{% endif %} · {{ site.title | default: 'Lapsum Criativo' }}">
-<meta
-    property="og:description"
-    content="{% if og_price %}{{ og_price }} · {% endif %}{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
->
-<meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.image | absolute_url }}{% endif %}">
+<meta property="og:title" content="{{ full_title | strip }}">
+<meta property="og:description" content="{{ full_description | strip }}">
+<meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.og_image | absolute_url }}{% endif %}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ page.title | default: site.title }}">
 
 <!-- Meta tags de produto para Facebook / WhatsApp / Instagram -->
@@ -48,6 +54,6 @@
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ page.title }}{% if og_price %} — {{ og_price }}{% endif %} · {{ site.title | default: 'Lapsum Criativo' }}">
-<meta name="twitter:description" content="{% if og_price %}{{ og_price }} · {% endif %}{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-<meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.image | absolute_url }}{% endif %}">
+<meta name="twitter:title" content="{{ full_title | strip }}">
+<meta name="twitter:description" content="{{ full_description | strip }}">
+<meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.og_image | absolute_url }}{% endif %}">
