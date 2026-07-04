@@ -40,7 +40,7 @@
 <meta property="og:site_name" content="{{ site.title | default: 'Lapsum Criativo' }}">
 <meta property="og:title" content="{{ full_title | strip }}">
 <meta property="og:description" content="{{ full_description | strip }}">
-<meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.og_image | absolute_url }}{% endif %}">
+<meta property="og:image" content="{% if page.banner %}{{ page.banner | absolute_url }}{% else %}{{ site.og_image | absolute_url }}{% endif %}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ page.title | default: site.title }}">
