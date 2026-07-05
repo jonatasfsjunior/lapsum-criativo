@@ -61,6 +61,17 @@ jobs:
             }
           }
           EOF
+          
+      - name: Debug do output
+        run: |
+          echo "=== config.json ==="
+          cat .vercel/output/config.json
+          echo ""
+          echo "=== 404.html existe? ==="
+          ls -la .vercel/output/static/404.html
+          echo ""
+          echo "=== Estrutura do static ==="
+          ls .vercel/output/static/
 
       - name: Deploy para Vercel
         run: npx vercel deploy --prebuilt --prod --yes
