@@ -5,7 +5,7 @@ description: Mod do Volkswagen Polo Track 2024 low poly SA Style para GTA San An
 author: John7tas
 product_code: VWPLTRCK24
 banner: /img/banner/PoloTrack2024v1lp/PoloTrack2024v1lp-LC.jpg
-image: /img/galeria/PoloTrack2024v1lp.jpg
+image: /img/logo/PoloTrack2024v1lp/PoloTrack2024v1lpIcon.jpg
 price-br: "90,00"
 price-usa: "16.99"
 price-euro: "15,99"
@@ -20,12 +20,12 @@ rating: 5
 hide_hero: false
 hero_images:
     - /img/banner/PoloTrack2024v1lp/PoloTrack2024v1lp-LC.jpg
-    - /img/galeria/PoloTrack2024v1lp-0.jpg
-    - /img/galeria/PoloTrack2024v1lp-1.jpg
-    - /img/galeria/PoloTrack2024v1lp-2.jpg
-    - /img/galeria/PoloTrack2024v1lp-3.jpg
-    - /img/galeria/PoloTrack2024v1lp-4.jpg
-    - /img/galeria/PoloTrack2024v1lp-5.jpg
+    - /img/galeria/PoloTrack2024v1lp/PoloTrack2024v1lp-0.jpg
+    - /img/galeria/PoloTrack2024v1lp/PoloTrack2024v1lp-1.jpg
+    - /img/galeria/PoloTrack2024v1lp/PoloTrack2024v1lp-2.jpg
+    - /img/galeria/PoloTrack2024v1lp/PoloTrack2024v1lp-3.jpg
+    - /img/galeria/PoloTrack2024v1lp/PoloTrack2024v1lp-4.jpg
+    - /img/galeria/PoloTrack2024v1lp/PoloTrack2024v1lp-5.jpg
 hero_height: is-fullheight
 hero_image_thumbs: true
 hero_hide_text: true
