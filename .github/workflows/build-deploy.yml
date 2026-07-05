@@ -46,7 +46,15 @@ jobs:
         run: |
           mkdir -p .vercel/output/static
           cp -r _site/. .vercel/output/static/
-          echo '{"version":3}' > .vercel/output/config.json
+          cat > .vercel/output/config.json << 'EOF'
+          {
+            "version": 3,
+            "routes": [
+              { "handle": "filesystem" },
+              { "src": "/.*", "status": 404, "dest": "/404.html" }
+            ]
+          }
+          EOF
 
       - name: Debug do output
         run: |
