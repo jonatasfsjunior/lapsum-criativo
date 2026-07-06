@@ -59,4 +59,4 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ full_title | strip }}">
 <meta name="twitter:description" content="{{ full_description | strip }}">
-<meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.og_image | absolute_url }}{% endif %}">
+<meta name="twitter:image" content="{% if page.banner %}{{ page.banner | absolute_url }}{% else %}{{ site.og_image | absolute_url }}{% endif %}">
