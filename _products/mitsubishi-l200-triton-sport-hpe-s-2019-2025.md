@@ -1,6 +1,5 @@
 ---
 title: Mitsubishi L200 Triton Sport HPE-S 2021
-subtitle: "Para você, para a sua história."
 description: Mod da Mitsubishi L200 Triton Sport HPE-S 2021-2025 low poly SA Style para GTA San Andreas.
 product_code: L20TRIHPES
 layout: product

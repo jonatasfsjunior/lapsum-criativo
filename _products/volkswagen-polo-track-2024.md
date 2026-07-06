@@ -1,6 +1,5 @@
 ---
 title: Volkswagen Polo Track 2024
-subtitle: "Para você, para a sua história."
 description: Mod do Volkswagen Polo Track 2024 low poly SA Style para GTA San Andreas.
 author: John7tas
 product_code: VWPLTRCK24
