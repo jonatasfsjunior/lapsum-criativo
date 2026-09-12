@@ -58,8 +58,8 @@ exclude:
   - promo-page.md
   - showcase.md
   - sponsors.md
-  - _posts/
-  - blog/
+#  - _posts/
+#  - blog/
 
 
 livereload: true
