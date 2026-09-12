@@ -11,6 +11,7 @@ show_sidebar: false
 hero_image_thumbs: false
 hero_hide_text: true
 hero_lightbox: false
+hide_hero: true
 ---
-[Loja](/products)
+[Loja](/products)<br>
 [Blog](/blog)
