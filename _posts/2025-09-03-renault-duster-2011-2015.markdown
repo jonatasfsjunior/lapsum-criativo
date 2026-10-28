@@ -1,20 +1,39 @@
 ---
 layout: post
-date:   2026-01-01 12:00:00:00 -300 # YYYY-MM-DD HH:MM:SS +/-0300
-title:  Renalt Duster 2011-2015
+date:   2026-10-28 00:57:00 -300 # YYYY-MM-DD HH:MM:SS +/-0300
+title:  Como foi minha experiência em atuar como designer numa comunidade de mods...
 subtitle:
-description: Modelo 3D Renalt Duster 2011-2015
+description: Neste post eu conto um pouco sobre minha vida, e a minha experiência como designer 3d fazendo modificações para jogos, em especial, o GTA San Andreas.
 image: /img/products/duster2011-lp/duster.png
 hero_image: /img/products/duster2011-lp/duster-front-side.png
 hero_height: is-medium
 hero_darken: true
 #permalink: :categories/:day/:short_month/:year/:week/:title
 canonical_url: 
-categories: Veículos
-tags: [Carros,Low-Poly,GTA SA,Game-ready,Modelo 3D,]
-series: Veículos Low-Poly
+categories: Pessoal
+tags: [Esperiências]
+series: Vivências
 published: true
 keywords:
 product_code: JJ11DTR
+rw_modelview:
+  enabled: true
+  game: sa
+  model: stallion
+  height: 560px
 ---
+Neste post eu conto um pouco sobre minha vida, e a minha experiência como designer 3d fazendo modificações para jogos, em especial, o GTA San Andreas.
+<!--more-->
+
+Ao longo de muitos anos eu estive ativo envolvido em algumas várias comunidades de "modders" de jogos, principalmente de GTA San Andreas, onde eu conheci pessoas e comecei a desenvolver minhas atividades de designer.
+
+Eu meio que entrei nesse meio 
+
 {% include product-tabs.html %}
+<br>
+{% if page.rw_modelview.enabled %}
+  {% include rw-modelview.html
+     game=page.rw_modelview.game
+     model=page.rw_modelview.model
+     height=page.rw_modelview.height %}
+{% endif %}

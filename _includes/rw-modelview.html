@@ -1,0 +1,187 @@
+{%- assign rw_game = include.game | default: "sa" | downcase -%}
+{%- assign rw_model = include.model | default: "" -%}
+{%- assign rw_data_root = include.data_root | default: "/assets/rw-data" -%}
+{%- assign rw_height = include.height | default: "480px" -%}
+{%- unless rw_game == "iii" or rw_game == "vc" or rw_game == "sa" -%}
+  {%- assign rw_game = "sa" -%}
+{%- endunless -%}
+
+<div class="rw-modelview{% if include.embed %} rw-modelview--embed{% endif %}"
+     data-game="{{ rw_game | escape }}"
+     data-model="{{ rw_model | escape }}"
+     data-allow-query="{{ include.allow_query | default: false }}"
+     data-data-root="{{ rw_data_root | relative_url | escape }}"
+     style="--rw-modelview-height: {{ rw_height | escape }}">
+  <div class="rw-modelview__stage">
+    <canvas id="glcanvas" aria-label="Visualizador de modelo RenderWare"></canvas>
+    <div class="rw-modelview__loader" id="viewer-loader"
+         role="status" aria-live="polite" aria-label="Carregando visualizador">
+      <div class="rw-modelview__loader-content">
+        <div class="rw-modelview__loader-mark">
+          <span class="rw-modelview__loader-ring" aria-hidden="true"></span>
+          <img src="{{ '/img/Lapsum.svg' | relative_url }}"
+               alt="" class="rw-modelview__loader-logo">
+        </div>
+        <p class="rw-modelview__loader-title">Preparando visualizador</p>
+        <div class="rw-modelview__loader-progress" aria-hidden="true">
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="rw-modelview__actions" id="viewer-actions">
+      <div class="rw-modelview__help-panel" id="viewer-help-panel"
+           role="dialog" aria-labelledby="viewer-help-title" hidden>
+        <h2 id="viewer-help-title">Controles do visualizador</h2>
+        <dl>
+          <dt>Girar</dt>
+          <dd>Arraste com o botão esquerdo do mouse.</dd>
+          <dt>Mover</dt>
+          <dd>Arraste com o botão direito ou do meio.</dd>
+          <dt>Zoom</dt>
+          <dd>Use a roda do mouse.</dd>
+          <dt>Toque</dt>
+          <dd>Um dedo gira; dois dedos movem e ajustam o zoom.</dd>
+        </dl>
+      </div>
+      <div class="rw-modelview__view-panel" id="viewer-view-panel"
+           role="dialog" aria-labelledby="viewer-view-title" hidden>
+        <h2 id="viewer-view-title">Selecionar vista</h2>
+        <div class="rw-modelview__view-cube-stage" role="group"
+             aria-label="Cubo de orientação da câmera">
+          <div class="rw-modelview__view-cube">
+            <button class="rw-modelview__view-face rw-modelview__view-face--front"
+                    type="button" data-view="front" aria-label="Vista frontal"
+                    title="Frontal">Frente</button>
+            <button class="rw-modelview__view-face rw-modelview__view-face--back"
+                    type="button" data-view="back" aria-label="Vista traseira"
+                    title="Traseira">Trás</button>
+            <button class="rw-modelview__view-face rw-modelview__view-face--left"
+                    type="button" data-view="left" aria-label="Vista esquerda"
+                    title="Esquerda">Esq.</button>
+            <button class="rw-modelview__view-face rw-modelview__view-face--right"
+                    type="button" data-view="right" aria-label="Vista direita"
+                    title="Direita">Dir.</button>
+            <button class="rw-modelview__view-face rw-modelview__view-face--top"
+                    type="button" data-view="top" aria-label="Vista superior"
+                    title="Superior">Cima</button>
+            <button class="rw-modelview__view-face rw-modelview__view-face--bottom"
+                    type="button" data-view="bottom" aria-label="Vista inferior"
+                    title="Inferior">Baixo</button>
+          </div>
+          <button class="rw-modelview__view-turn rw-modelview__view-turn--left"
+                  type="button" data-view-turn="left"
+                  aria-label="Girar cubo para a esquerda" title="Girar para a esquerda">‹</button>
+          <button class="rw-modelview__view-turn rw-modelview__view-turn--right"
+                  type="button" data-view-turn="right"
+                  aria-label="Girar cubo para a direita" title="Girar para a direita">›</button>
+          <button class="rw-modelview__view-turn rw-modelview__view-turn--up"
+                  type="button" data-view-turn="up"
+                  aria-label="Girar cubo para cima" title="Girar para cima">⌃</button>
+          <button class="rw-modelview__view-turn rw-modelview__view-turn--down"
+                  type="button" data-view-turn="down"
+                  aria-label="Girar cubo para baixo" title="Girar para baixo">⌄</button>
+          <button class="rw-modelview__view-corner rw-modelview__view-corner--top-left"
+                  type="button" data-view="front-left"
+                  aria-label="Vista frontal esquerda" title="Frontal esquerda"></button>
+          <button class="rw-modelview__view-corner rw-modelview__view-corner--top-right"
+                  type="button" data-view="front-right"
+                  aria-label="Vista frontal direita" title="Frontal direita"></button>
+          <button class="rw-modelview__view-corner rw-modelview__view-corner--bottom-left"
+                  type="button" data-view="back-left"
+                  aria-label="Vista traseira esquerda" title="Traseira esquerda"></button>
+          <button class="rw-modelview__view-corner rw-modelview__view-corner--bottom-right"
+                  type="button" data-view="back-right"
+                  aria-label="Vista traseira direita" title="Traseira direita"></button>
+        </div>
+      </div>
+      <div class="rw-modelview__action-bar" role="toolbar"
+           aria-label="Ações do visualizador">
+        <div class="rw-modelview__action-tools">
+          <button class="rw-modelview__action-button" id="viewer-help-button"
+                  type="button" aria-label="Ajuda" aria-expanded="false"
+                  aria-controls="viewer-help-panel" title="Ajuda">
+            <span aria-hidden="true">?</span>
+          </button>
+          <button class="rw-modelview__action-button" id="viewer-view-button"
+                  type="button" aria-label="Vista" aria-expanded="false"
+                  aria-controls="viewer-view-panel" title="Vista">
+            <span aria-hidden="true">Vista</span>
+          </button>
+        </div>
+        <button class="rw-modelview__action-button rw-modelview__tools-toggle"
+                type="button" aria-label="Esconder botões" aria-expanded="true"
+                title="Esconder botões">
+          <i class="fas fa-eye-slash" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rw-modelview__controls">
+    <div class="rw-modelview__parts" id="parts-controls"
+         aria-label="Alternar partes do veículo" hidden></div>
+
+    <div class="rw-modelview__colors" id="colors"
+         role="group" aria-label="Combinações de cores"></div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="{{ '/assets/css/rw-modelview.css' | relative_url }}">
+
+<script src="{{ '/assets/js/rw_modelview/gl-matrix.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/rw_modelview/gl-util.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/rw_modelview/rw.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/rw_modelview/rwrender.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/rw_modelview/shaders.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/rw_modelview/rwstream.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/rw_modelview/sa-plates.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/rw_modelview/main.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/rw_modelview/loaddata.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/rw_modelview/ui.js' | relative_url }}"></script>
+
+<script>
+(function () {
+  // O modelviewjs original usa IDs e variáveis globais:
+  // mantenha apenas um visualizador por página.
+  var embed = document.querySelector(".rw-modelview");
+  var game = embed.dataset.game;
+  var model = embed.dataset.model;
+  if (embed.dataset.allowQuery === "true") {
+    var params = new URLSearchParams(window.location.search);
+    var requestedGame = params.get("game");
+    var requestedModel = params.get("model");
+
+    if (["iii", "vc", "sa"].includes(requestedGame)) {
+      game = requestedGame;
+    }
+    if (requestedModel && /^[a-zA-Z0-9_-]+$/.test(requestedModel)) {
+      model = requestedModel;
+    }
+  }
+  var dataRoot = embed.dataset.dataRoot.replace(/\/$/, "");
+
+  window.defaultModel = model || "stallion";
+  window.currentGame = game;
+  window.DataDirPath = dataRoot + "/" + game + "/data";
+  window.ModelsDirPath = dataRoot + "/" + game + "/models";
+  window.TexturesDirPath = dataRoot + "/" + game + "/textures";
+  window.loadCar =
+    game === "iii" ? loadCarIII :
+    game === "vc" ? loadCarVC :
+    loadCarSA;
+
+  if (!InitRW()) {
+    return;
+  }
+
+  loadVehicleViewer(game === "sa" ? "vehicles.ide" : "default.ide", function () {
+    var selectedModel = model || window.defaultModel;
+    if (!ModelInfosName[selectedModel]) {
+      showViewerError("O modelo solicitado não existe no catálogo.");
+      console.error("Modelo não encontrado no catálogo:", selectedModel);
+      return;
+    }
+    SelectModel(selectedModel);
+  });
+})();
+</script>

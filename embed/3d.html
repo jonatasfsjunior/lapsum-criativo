@@ -1,0 +1,58 @@
+---
+layout: null
+permalink: /embed/3d/
+---
+<!doctype html>
+<html lang="{{ site.lang | default: 'pt' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visualizador 3D | {{ site.title | escape }}</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .rw-modelview--embed {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .rw-modelview--embed .rw-modelview__stage {
+      flex: 1 1 auto;
+      height: auto;
+      min-height: 0;
+    }
+
+    .rw-modelview--embed .rw-modelview__controls {
+      flex: 0 0 auto;
+      gap: .5rem;
+      padding: .5rem;
+    }
+
+    @media (max-width: 480px) {
+      .rw-modelview--embed .rw-modelview__controls {
+        gap: .5rem;
+        padding: .5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  {% include rw-modelview.html
+     game="sa"
+     model="stallion"
+     height="100vh"
+     embed=true
+     allow_query=true %}
+</body>
+</html>

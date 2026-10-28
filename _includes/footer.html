@@ -1,9 +1,16 @@
 <footer class="footer">
     <div class="container">
-        <figure class="footer-logo">
-            <img src="/img/Lapsum.svg" alt="Lapsum Criativo Brand">
-        </figure>
-        {{ site.title }}
-        {% include follow.html %}
+        <div class="columns">
+            <div class="column is-2 footer-brand">
+                <figure class="footer-logo">
+                    <img src="/img/Lapsum.svg" alt="Lapsum Criativo Brand">
+                </figure>
+                {{ site.title }}
+            </div>
+            <div class="column"></div>
+            <div class="column">
+                {% include follow.html %}
+            </div>
+        </div>
     </div>
 </footer>
